@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/output.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Student</title>
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-6">
+
+    <form action="/update/<%= student._id %>" method="POST"
+        class="w-full max-w-3xl bg-white p-8 rounded-2xl shadow-lg space-y-6">
+
+        <!-- Title -->
+        <h1 class="text-3xl font-bold text-center text-blue-600">
+            Update Student
+        </h1>
+
+        <!-- Grid Inputs -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+            <input type="text" name="name" value="<%= student.name %>" required
+                class="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none">
+
+            <input type="number" name="age" value="<%= student.age %>" required
+                class="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none">
+
+            <input type="text" name="className" value="<%= student.className %>" required
+                class="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none">
+
+            <input type="text" name="roll" value="<%= student.roll %>" required
+                class="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none">
+
+            <input type="email" name="email" value="<%= student.email %>" required
+                class="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none">
+
+            <input type="text" name="phone" value="<%= student.phone %>" required
+                class="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none">
+
+            <!-- Gender -->
+            <select name="gender" required
+                class="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none">
+
+                <option value="Male" <%= student.gender === "Male" ? "selected" : "" %>>Male</option>
+                <option value="Female" <%= student.gender === "Female" ? "selected" : "" %>>Female</option>
+                <option value="Other" <%= student.gender === "Other" ? "selected" : "" %>>Other</option>
+
+            </select>
+
+            <input type="text" name="address" value="<%= student.address %>" required
+                class="border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none">
+
+        </div>
+
+        <!-- Button -->
+        <button type="submit"
+            class="w-full bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 active:scale-95 transition transform">
+            Update Student
+        </button>
+
+    </form>
+
+</body>
+</html>

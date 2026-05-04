@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <link rel="stylesheet" href="/output.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>edit</title>
+  <style>
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.6s ease-out;
+    }
+  </style>
+</head>
+
+<body class="bg-black">
+
+  <div class="max-w-5xl mx-auto p-6 fade-in">
+    <h1 class="text-3xl text-lime-950 font-bold text-center mb-6">Student Details Form</h1>
+
+    <!-- FORM (POST METHOD) -->
+    <form action="/AddStudent" method="POST"
+      class="bg-gray-800 p-6 rounded-xl shadow-[0_0_8px_rgba(241,90,36,0.4)] grid grid-cols-1 md:grid-cols-2 gap-4 transition-all duration-500">
+
+      <input name="name" type="text" placeholder="Student Name" required
+        class="border p-2 rounded  focus:ring-2 focus:ring-blue-400 transition" />
+
+      <input name="age" type="number" placeholder="Age" required
+        class="border p-2 rounded focus:ring-2 focus:ring-blue-400 transition" />
+
+      <input name="className" type="text" placeholder="Class" required
+        class="border p-2 rounded focus:ring-2 focus:ring-blue-400 transition" />
+
+      <input name="roll" type="text" placeholder="Roll Number" required
+        class="border p-2 rounded focus:ring-2 focus:ring-blue-400 transition" />
+
+      <input name="email" type="email" placeholder="Email" required
+        class="border p-2 rounded focus:ring-2 focus:ring-blue-400 transition" />
+
+      <input name="phone" type="text" placeholder="Phone" required
+        class="border p-2 rounded focus:ring-2 focus:ring-blue-400 transition" />
+
+      <select name="gender" class="border p-2 rounded" required>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <input name="address" type="text" placeholder="Address" required
+        class="border p-2 rounded focus:ring-2 focus:ring-blue-400 transition" />
+
+      <button type="submit"
+        class="md:col-span-2 bg-blue-600 text-white p-2 rounded hover:bg-blue-700 active:scale-95 transition transform">
+        Submit Student
+      </button>
+      <% if (msg) { %>
+        <p class="text-green-400">
+          <%= msg %>
+        </p>
+        <% } %>
+    </form>
+
+
+  </div>
+
+  <div class="min-h-screen bg-black">
+
+    <!-- The Decorative Line (Exactly like Screenshot 2026-04-29 162925.png) -->
+   <!-- Added 'mx-auto' for centering and adjusted line thickness -->
+<div class="flex items-center w-[80%] mx-auto justify-center gap-x-0 mb-10">
+  
+  <!-- Left Side -->
+  <div class="flex-grow flex items-center relative h-4">
+    <!-- Line: thoda sa opacity badha di hai taaki black background par dikhe -->
+    <div class="w-full h-[2px] bg-amber-700"></div>
+    
+    <!-- Dots (Diamond shape) -->
+    <div class="absolute left-0 w-2 h-2 bg-[#f15a24] rounded-[1px] rotate-45 shadow-[0_0_8px_rgba(241,90,36,0.4)]"></div>
+
+  </div>
+
+  <!-- Center Logo Box -->
+  <div class="flex-shrink-0 px-6">
+    <div class="w-auto h-auto  flex items-center justify-center rotate-3 shadow-[0_0_20px_rgba(241,90,36,0.2)]">
+      <span class="text-[#f15a24] text-3xl font-black  select-none">Student List</span>
+    </div>
+  </div>
+
+  <!-- Right Side -->
+  <div class="flex-grow flex items-center relative h-4">
+    <div class="w-full h-[2px] bg-amber-700"></div>
+    
+    <!-- Dots (Diamond shape) -->
+
+    <div class="absolute right-0 w-2 h-2 bg-[#f15a24] rounded-[1px] rotate-45 shadow-[0_0_8px_rgba(241,90,36,0.4)]"></div>
+  </div>
+
+</div>
+    <div class="m-19">
+      <a href="/class/9th" class="bg-blue-500 text-white px-3 py-1 rounded">Class 9</a>
+      <a href="/class/10th" class="bg-green-500 text-white px-3 py-1 rounded">Class 10</a>
+      <a href="/class/11th" class="bg-red-500 text-white px-3 py-1 rounded">Class 11</a>
+      <a href="/AddStudent" class="bg-red-500 text-white px-3 py-1 rounded">AllStudents</a>
+    </div>
+    <div class="grid grid-cols-1 m-4 md:grid-cols-3 gap-6">
+
+      <% getData.forEach(item=> { %>
+
+        <div class="bg-white rounded-2xl shadow-md p-5 hover:shadow-xl transition duration-300 border border-gray-200">
+
+          <!-- Name -->
+          <h2 class="text-xl font-bold text-blue-600 mb-2">
+            <%= item.name %>
+          </h2>
+
+          <!-- Details -->
+          <div class="space-y-1 text-gray-700 text-sm">
+
+            <p><span class="font-semibold">Age:</span>
+              <%= item.age %>
+            </p>
+
+            <p><span class="font-semibold">Class:</span>
+              <%= item.className %>
+            </p>
+
+            <p><span class="font-semibold">Roll:</span>
+              <%= item.roll %>
+            </p>
+
+            <p><span class="font-semibold">Email:</span>
+              <%= item.email %>
+            </p>
+
+            <p><span class="font-semibold">Phone:</span>
+              <%= item.phone %>
+            </p>
+
+            <p><span class="font-semibold">Gender:</span>
+              <%= item.gender %>
+            </p>
+
+            <p><span class="font-semibold">Address:</span>
+              <%= item.address %>
+            </p>
+
+          </div>
+
+          <!-- Button Area (optional) -->
+          <div class="mt-4 flex gap-2">
+            <a href="/edit/<%= item._id %>">
+            <button class="bg-yellow-400 text-white px-3 py-1 rounded-lg hover:bg-yellow-500">
+              Edit
+            </button></a>
+            <a href="/delete/<%= item._id %>">
+              <button class="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600">
+                Delete
+              </button>
+            </a>
+          </div>
+
+        </div>
+
+        <% }) %>
+
+    </div>
+  </div>
+</body>
+
+</html>
